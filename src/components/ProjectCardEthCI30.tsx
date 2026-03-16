@@ -1,0 +1,54 @@
+"use client";
+
+import * as React from "react";
+import { Link2, Github, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
+
+export function ProjectCardEthCI30() {
+    return (
+        <div className="flex flex-col h-full bg-card rounded-2xl overflow-hidden border border-border/50 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl group">
+            {/* Thumbnail area (Gradient placeholder) */}
+            <div className="h-48 w-full bg-gradient-to-br from-emerald-600 to-teal-800 relative overflow-hidden flex items-center justify-center">
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
+                <span className="text-white text-2xl font-bold tracking-widest uppercase z-10 glass px-6 py-2 rounded-lg">Eth CI 30</span>
+            </div>
+
+            <div className="flex flex-col flex-grow p-6">
+                <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-xl font-semibold">Eth CI 30</h3>
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300">
+                        Crypto Data
+                    </span>
+                </div>
+
+                <p className="text-muted-foreground text-sm mb-6 flex-grow">
+                    A proprietary crypto index tracking the top 30 Ethereum ecosystem tokens based on dynamic market capitalization, tailored for quantitative finance analysis and institutional tracking.
+                </p>
+
+                <div className="space-y-4">
+                    <div className="flex flex-wrap gap-2">
+                        {["Python", "Pandas", "API Auth", "Data Engineering"].map((tech) => (
+                            <span key={tech} className="px-2 py-1 bg-secondary text-secondary-foreground text-xs rounded-md">
+                                {tech}
+                            </span>
+                        ))}
+                    </div>
+
+                    <ul className="space-y-1 text-sm text-muted-foreground">
+                        <li className="flex items-start"><CheckCircle2 className="w-4 h-4 mr-2 text-primary mt-0.5 shrink-0" /> Market capitalization weighting</li>
+                        <li className="flex items-start"><CheckCircle2 className="w-4 h-4 mr-2 text-primary mt-0.5 shrink-0" /> Automated rebalancing</li>
+                    </ul>
+
+                    <div className="pt-4 border-t border-border/50 flex gap-3 mt-auto">
+                        <Link href="#" className="flex-1 inline-flex justify-center items-center py-2 px-4 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
+                            <Link2 className="w-4 h-4 mr-2" /> View Index
+                        </Link>
+                        <Link href="#" className="inline-flex justify-center items-center py-2 px-4 rounded-lg bg-secondary text-secondary-foreground text-sm font-medium hover:bg-secondary/80 transition-colors">
+                            <Github className="w-4 h-4" />
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}

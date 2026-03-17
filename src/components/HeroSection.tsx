@@ -5,9 +5,11 @@ import Image from "next/image";
 import { ArrowRight, Mail } from "lucide-react";
 import Link from "next/link";
 import { motion } from "motion/react";
+import { useLanguage } from "./LanguageContext";
 
 export function HeroSection() {
-    const titles = ["Business Analyst", "IT Consultant", "Fintech Founder"];
+    const { t } = useLanguage();
+    const titles = t.hero.titles;
 
     return (
         <section id="home" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
@@ -35,7 +37,7 @@ export function HeroSection() {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="flex flex-wrap justify-center gap-2 mb-6"
                     >
-                        {titles.map((title) => (
+                        {titles.map((title: string) => (
                             <span
                                 key={title}
                                 className="px-4 py-1.5 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20"
@@ -52,8 +54,8 @@ export function HeroSection() {
                         transition={{ duration: 0.5, delay: 0.3 }}
                         className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight mb-6"
                     >
-                        Hi, I&apos;m{" "}
-                        <span className="text-gradient">Franck Lionel Tani</span>
+                        {t.hero.greeting}{" "}
+                        <span className="text-gradient">{t.hero.name}</span>
                     </motion.h1>
 
                     {/* Value Proposition */}
@@ -63,8 +65,7 @@ export function HeroSection() {
                         transition={{ duration: 0.5, delay: 0.4 }}
                         className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed"
                     >
-                        Driving fintech innovation in West Africa through strategic business analysis,
-                        cutting-edge management information systems, and entrepreneurial vision.
+                        {t.hero.description}
                     </motion.p>
 
                     {/* CTA Buttons */}
@@ -78,14 +79,14 @@ export function HeroSection() {
                             href="#projects"
                             className="inline-flex items-center justify-center px-8 py-3.5 text-base font-medium text-white bg-primary hover:bg-primary/90 rounded-full transition-all hover:shadow-lg hover:shadow-primary/25 w-full sm:w-auto"
                         >
-                            View My Work
+                            {t.hero.viewWork}
                             <ArrowRight className="ml-2 h-5 w-5" />
                         </Link>
                         <Link
                             href="#contact"
                             className="inline-flex items-center justify-center px-8 py-3.5 text-base font-medium text-foreground bg-secondary hover:bg-secondary/80 rounded-full transition-all w-full sm:w-auto"
                         >
-                            Get In Touch
+                            {t.hero.getInTouch}
                             <Mail className="ml-2 h-5 w-5" />
                         </Link>
                     </motion.div>

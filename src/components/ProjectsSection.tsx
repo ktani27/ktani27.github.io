@@ -5,17 +5,20 @@ import { ProjectCardAfrifund } from "./ProjectCardAfrifund";
 import { ProjectCardEthCI30 } from "./ProjectCardEthCI30";
 import { ProjectCardPralines } from "./ProjectCardPralines";
 import { motion } from "motion/react";
+import { useLanguage } from "./LanguageContext";
 
 export function ProjectsSection() {
+    const { t } = useLanguage();
+
     return (
         <section id="projects" className="py-24 bg-muted/10 relative">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-                        Featured <span className="text-gradient">Projects</span>
+                        {t.projects.title} <span className="text-gradient">{t.projects.titleAccent}</span>
                     </h2>
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        Highlighting core initiatives that drive innovation and deliver measurable business value.
+                        {t.projects.subtitle}
                     </p>
                 </div>
 

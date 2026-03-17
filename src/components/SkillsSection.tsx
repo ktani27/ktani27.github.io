@@ -3,6 +3,7 @@
 import * as React from "react";
 import { Database, Code, BarChart, PieChart, AppWindow } from "lucide-react";
 import { motion } from "motion/react";
+import { useLanguage } from "./LanguageContext";
 
 const skills = [
     { name: "SQL", icon: <Database className="w-5 h-5 mr-2" /> },
@@ -13,15 +14,17 @@ const skills = [
 ];
 
 export function SkillsSection() {
+    const { t } = useLanguage();
+
     return (
         <section id="skills" className="py-20 bg-background relative overflow-hidden">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-                        Technical <span className="text-gradient">Proficiencies</span>
+                        {t.skills.title} <span className="text-gradient">{t.skills.titleAccent}</span>
                     </h2>
                     <p className="text-muted-foreground max-w-2xl mx-auto">
-                        Leveraging industry-standard tools for data analysis, business intelligence, and scalable architecture.
+                        {t.skills.subtitle}
                     </p>
                 </div>
 

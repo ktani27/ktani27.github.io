@@ -4,22 +4,27 @@ import * as React from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { Moon, Sun, Menu, X } from "lucide-react";
-import { usePathname } from "next/navigation";
+import { useLanguage } from "./LanguageContext";
 
 export function Navbar() {
     const { setTheme, theme } = useTheme();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+    const { language, setLanguage, t } = useLanguage();
 
     const toggleTheme = () => {
         setTheme(theme === "dark" ? "light" : "dark");
     };
 
+    const toggleLanguage = () => {
+        setLanguage(language === "en" ? "fr" : "en");
+    };
+
     const navLinks = [
-        { name: "Home", href: "#home" },
-        { name: "Experience", href: "#experience" },
-        { name: "Projects", href: "#projects" },
-        { name: "Skills", href: "#skills" },
-        { name: "Contact", href: "#contact" },
+        { name: t.nav.home, href: "#home" },
+        { name: t.nav.experience, href: "#experience" },
+        { name: t.nav.projects, href: "#projects" },
+        { name: t.nav.skills, href: "#skills" },
+        { name: t.nav.contact, href: "#contact" },
     ];
 
     return (
@@ -50,7 +55,17 @@ export function Navbar() {
                     </nav>
 
                     {/* Right side buttons */}
-                    <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-2 sm:space-x-4">
+                        <button
+                            onClick={toggleLanguage}
+                            className="px-2 py-1.5 text-xs font-semibold rounded-md hover:bg-muted transition-colors text-foreground flex items-center space-x-1 border border-border/50"
+                            aria-label="Toggle language"
+                        >
+                            <span className={language === "en" ? "text-primary" : "text-muted-foreground"}>EN</span>
+                            <span className="text-muted-foreground/50">|</span>
+                            <span className={language === "fr" ? "text-primary" : "text-muted-foreground"}>FR</span>
+                        </button>
+
                         <button
                             onClick={toggleTheme}
                             className="p-2 rounded-full hover:bg-muted transition-colors text-foreground"
